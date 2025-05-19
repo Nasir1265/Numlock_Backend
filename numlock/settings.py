@@ -24,7 +24,11 @@ SECRET_KEY = 'django-insecure-c&hn@hdgztpd41k0cvbm$cf2$$_dxh_hh7h52l2+yt5=a7bt4-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['*']  # or your actual domain/IP
+ALLOWED_HOSTS = ['numlock-backend-1-z5vo.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://numlock-backend-1-z5vo.onrender.com',
+]
 
 
 
@@ -42,19 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework.authtoken",
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # must come before CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    "django.middleware.common.CommonMiddleware",
 ]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'numlock.urls'
 
@@ -140,3 +143,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
