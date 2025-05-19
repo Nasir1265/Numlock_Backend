@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c&hn@hdgztpd41k0cvbm$cf2$$_dxh_hh7h52l2+yt5=a7bt4-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['numlock-backend-1-z5vo.onrender.com']
+DEBUG = True
+ALLOWED_HOSTS = ['numlock-backend-1-z5vo.onrender.com',"*"]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://numlock-backend-1-z5vo.onrender.com',
