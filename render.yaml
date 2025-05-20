@@ -8,8 +8,8 @@ services:
       - key: DATABASE_URL
         value: "postgresql://postgres:eRAZPRgbvQwLWMqFNBgBZkVrqlGQpLGa@postgres.railway.internal:5432/railway"
       - key: CLOUDINARY_CLOUD_NAME
-        value: "dvqmpqdan"
+        value: "dcydv0ml9"
       - key: CLOUDINARY_API_KEY
-        value: "383613664484685"
+        value: "972438774663272"
       - key: CLOUDINARY_API_SECRET
-        value: "uRmVjFjp1O4xHOHmXcl62I8mlZ4"
+        value: "w5x5fcv1vlkN0xLBe7AuXhxjG6Y"
