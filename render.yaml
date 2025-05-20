@@ -5,13 +5,11 @@ services:
     buildCommand: "pip install -r requirements.txt && python manage.py migrate"
     startCommand: "gunicorn numlock.wsgi:application"
     envVars:
-      - key: postgresql://postgres:eRAZPRgbvQwLWMqFNBgBZkVrqlGQpLGa@postgres.railway.internal:5432/railway
-        fromDatabase:
-          name: postgres
-          property: connectionString
+      - key: DATABASE_URL
+        value: "postgresql://postgres:eRAZPRgbvQwLWMqFNBgBZkVrqlGQpLGa@postgres.railway.internal:5432/railway"
       - key: CLOUDINARY_CLOUD_NAME
-        value: dvqmpqdan
+        value: "dvqmpqdan"
       - key: CLOUDINARY_API_KEY
-        value: 383613664484685
+        value: "383613664484685"
       - key: CLOUDINARY_API_SECRET
-        value: uRmVjFjp1O4xHOHmXcl62I8mlZ4
+        value: "uRmVjFjp1O4xHOHmXcl62I8mlZ4"
