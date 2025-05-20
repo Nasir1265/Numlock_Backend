@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 # class Size(models.Model):
@@ -32,8 +32,7 @@ class Products(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(upload_to="products")
-
+    image = CloudinaryField('file', resource_type='auto', folder='products/')
     def __str__(self):
         return f"Image for {self.product.name}"
 

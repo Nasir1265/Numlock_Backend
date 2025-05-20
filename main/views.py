@@ -98,7 +98,7 @@ class Brand_service(APIView):
             serializer.save()
             return Response({"message": "Booking successful"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+ 
 class Contact_form(APIView):
     def post(self, request, *args, **kwargs):
         serializer = Contact_form_Serializer(data=request.data)
