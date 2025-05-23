@@ -10,8 +10,14 @@ from rest_framework.permissions import AllowAny
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework import status,generics
+from django.http import JsonResponse
 # Create your views here.
 
+# views.py
+
+def ping(request):
+    return JsonResponse({"status": "alive"})
+    
 class Register(CreateAPIView):
     queryset=User.objects.all()
     serializer_class=Register_Serializer
