@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from cloudinary.models import CloudinaryField
+from django.utils import timezone
 # Create your models here.
 
 # class Size(models.Model):
@@ -58,3 +59,25 @@ class Contact_form(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.subject}"
+
+
+class Order(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    user_email = models.EmailField()
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    razorpay_order_id = models.CharField(max_length=100, unique=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=20, default='created')  # created, paid, failed
+
+    def __str__(self):
+        return f"Order {self.razorpay_order_id}"
+ 
+class Payment(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    razorpay_payment_id = models.CharField(max_length=100, unique=True)
+    razorpay_signature = models.CharField(max_length=255)
+    status = models.CharField(max_length=20)  # success, failed
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"Payment {self.razorpay_payment_id}"

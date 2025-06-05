@@ -26,6 +26,10 @@ urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
     path('api/',include("main.urls")),
+
+    # payment integrations
+    path('api/create-order/', views.create_order, name='create_order'),
+    path('api/verify-payment/', views.verify_payment, name='verify_payment'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
